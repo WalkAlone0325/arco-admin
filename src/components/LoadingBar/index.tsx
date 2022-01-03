@@ -26,6 +26,11 @@ function LoadingBar(_, ref) {
     }, 300);
   }
 
+  /**
+   * 与 ref 一同使用
+   * 第一个参数，接收一个通过forwardRef引用父组件的ref实例，
+   * 第二个参数一个回调函数，返回一个对象,对象里面存储需要暴露给父组件的属性或方法
+   */
   useImperativeHandle(ref, () => ({
     loading,
     success,
