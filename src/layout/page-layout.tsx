@@ -105,11 +105,16 @@ function PageLayout() {
   function onClickMenuItem(key) {
     const currentRoute = flattenRoutes.find((r) => r.key === key);
     const component = currentRoute.component;
+    // ?? 这里
     const preload = component.preload();
+    // 加载
     loadingBarRef.current.loading();
     preload.then(() => {
+      // 设置 选中菜单
       setSelectedKeys([key]);
+      // 跳转路由 path 存在使用path ，否则使用 key
       history.push(currentRoute.path ? currentRoute.path : `/${key}`);
+      // 完成加载
       loadingBarRef.current.success();
     });
   }
